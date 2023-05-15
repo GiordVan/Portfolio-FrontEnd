@@ -1,24 +1,32 @@
 <div class="row g-0">
     <h1>Experiencia laboral</h1>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/nuevaexp" *ngIf="isLogged">
+            Nueva experiencia
+        </button>
+    </div>
+
     <div class="col-lg-1"></div>
     <div class="col-lg-11">
-        <ul>
-            <li>
-                <h1>Trabajo 1</h1> - <h3>(Años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus animi incidunt expedita tempore, eaque rerum totam similique nisi explicabo ullam. Amet iusto neque ea possimus est fuga dolores voluptates cum!</p>
-        </ul>
-        <ul>
-            <li>
-                <h1>Trabajo 2</h1> - <h3>(Años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus animi incidunt expedita tempore, eaque rerum totam similique nisi explicabo ullam. Amet iusto neque ea possimus est fuga dolores voluptates cum!</p>
-        </ul>
-        <ul>
-            <li>
-                <h1>Trabajo 3</h1> - <h3>(Años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus animi incidunt expedita tempore, eaque rerum totam similique nisi explicabo ullam. Amet iusto neque ea possimus est fuga dolores voluptates cum!</p>
-        </ul>
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let Experiencia of expe">
+                    <td>
+                        <h2>{{Experiencia.nombreE}}</h2>
+                    </td>
+                    <td>
+                        <h5>{{Experiencia.descripcionE}}</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-dark" routerLink="/editexp/{{Experiencia.id}}" *ngIf="isLogged"><i
+                                class="bi bi-wrench-adjustable"></i> </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="delete(Experiencia.id)" *ngIf="isLogged"><i
+                                class="bi bi-x-circle-fill"></i> </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
